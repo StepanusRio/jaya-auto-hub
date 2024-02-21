@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Skripsi Project
+
+This project is a starter project for building a web application using Next.js, NextAuth, TailwindCSS, Prisma, and MySQL.
 
 ## Getting Started
 
-First, run the development server:
+To get started, clone the repository and install the dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## To Clone This Project
+git clone https://github.com/StepanusRio/jaya-auto-hub
+## Continue To the Folder
+cd skripsi-project
+## To Install All Dependencies
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Once the dependencies are installed, you can start the development server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+## Rinning Project
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The development server will run on port 3000.
+You can open the application in your browser by visiting LOCAL_URL : [http://localhost:3000]
 
-## Learn More
+### Features
 
-To learn more about Next.js, take a look at the following resources:
+This project includes the following features:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- User authentication with AuthJs
+- A responsive layout with TailwindCSS
+- A data access layer with Prisma and MySQL
+- A simple CRUD application
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Usage
 
-## Deploy on Vercel
+` To use this project, you will need to create a new database and configure the Prisma client. You can find instructions on how to do this in the Prisma documentation.`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+Once you have configured the Prisma client, you can start using the application. The application includes a simple CRUD application that you can use to create, read, update, and delete data.
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# **Contributing**
+
+If you would like to contribute to this project, please feel free to submit a pull request. All contributions are welcome.
+
+# License
+
+This project is licensed under the MIT license.
