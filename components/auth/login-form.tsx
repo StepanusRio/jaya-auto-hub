@@ -8,7 +8,6 @@ import { Input } from '@/components/ui/input';
 import { LoginSchema } from '@/schemas';
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import { FC, useState, useTransition } from 'react';
 import { useForm } from "react-hook-form";
 import * as z from 'zod';
@@ -16,9 +15,9 @@ interface LoginFormProps {
 }
 
 const LoginForm: FC<LoginFormProps> = ({ }) => {
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl")
-  const urlError = searchParams.get("error") === "OAuthAccountNotLinked" ? "Email is already used with diverent providers" : ""
+  // const searchParams = useSearchParams();
+  // const callbackUrl = searchParams.get("callbackUrl")
+  // const urlError = searchParams.get("error") === "OAuthAccountNotLinked" ? "Email is already used with diverent providers" : ""
   const [showTwoFactor, setShowTwoFactor] = useState(false);
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | undefined>("");
@@ -120,7 +119,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
             )}
           </div>
           <FormSuccess message={success} />
-          <FormError message={error || urlError} />
+          <FormError message={error} />
           <Button disabled={isPending} type='submit' className='w-full'>
             {showTwoFactor ? "Confirm" : "Login"}
           </Button>

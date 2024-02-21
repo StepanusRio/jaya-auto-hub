@@ -6,7 +6,9 @@ interface LoginPageProps {
 
 const LoginPage: FC<LoginPageProps> = ({ }) => {
   return (
-    <LoginForm />
+    <>
+      <LoginForm />
+    </>
   )
 }
 
