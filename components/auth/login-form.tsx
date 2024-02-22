@@ -1,4 +1,5 @@
 "use client"
+import { login } from '@/actions/login';
 import Cardwrapper from '@/components/auth/card-wrapper';
 import FormError from '@/components/form-error';
 import FormSuccess from '@/components/form-success';
@@ -8,6 +9,7 @@ import { Input } from '@/components/ui/input';
 import { LoginSchema } from '@/schemas';
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { FC, useState, useTransition } from 'react';
 import { useForm } from "react-hook-form";
 import * as z from 'zod';
@@ -15,9 +17,9 @@ interface LoginFormProps {
 }
 
 const LoginForm: FC<LoginFormProps> = ({ }) => {
-  // const searchParams = useSearchParams();
-  // const callbackUrl = searchParams.get("callbackUrl")
-  // const urlError = searchParams.get("error") === "OAuthAccountNotLinked" ? "Email is already used with diverent providers" : ""
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl")
+  const urlError = searchParams.get("error") === "OAuthAccountNotLinked" ? "Email is already used with diverent providers" : ""
   const [showTwoFactor, setShowTwoFactor] = useState(false);
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | undefined>("");
@@ -31,33 +33,33 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
   })
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     console.log(values)
-    // setError("");
-    // setSuccess("");
-    // startTransition(() => {
-    //   login(values, callbackUrl)
-    //     .then((data) => {
-    //       if (data?.error) {
-    //         form.reset();
-    //         setError(data.error)
-    //       }
-    //       if (data?.success) {
-    //         form.reset();
-    //         setSuccess(data.success)
-    //       }
-    //       if (data?.twoFactor) {
-    //         setShowTwoFactor(true)
-    //       }
-    //     })
-    //     .catch(() => {
-    //       setError("Something went wrong!")
-    //     })
-    // })
+    setError("");
+    setSuccess("");
+    startTransition(() => {
+      login(values, callbackUrl)
+        .then((data) => {
+          if (data?.error) {
+            form.reset();
+            setError(data.error)
+          }
+          if (data?.success) {
+            form.reset();
+            setSuccess(data.success)
+          }
+          if (data?.twoFactor) {
+            setShowTwoFactor(true)
+          }
+        })
+        .catch(() => {
+          setError("Something went wrong!")
+        })
+    })
   }
   return (
     <Cardwrapper
       headerLabel='Welcome Back'
       backButtonLabel="Don't have an account?"
-      backButtonHref='/auth/register'
+      backButtonHref='/register'
       showSocial
     >
       <Form {...form}>
@@ -119,7 +121,7 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
             )}
           </div>
           <FormSuccess message={success} />
-          <FormError message={error} />
+          <FormError message={error || urlError} />
           <Button disabled={isPending} type='submit' className='w-full'>
             {showTwoFactor ? "Confirm" : "Login"}
           </Button>

@@ -1,15 +1,15 @@
 import AuthHeader from '@/components/auth/auth-header';
 import BackButton from '@/components/auth/back-button';
-import SocialButton from '@/components/auth/social-button';
+import Social from '@/components/auth/social-button';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { FC } from 'react';
 
 interface CardwrapperProps {
-  children: React.ReactNode,
+  children: React.ReactNode
   headerLabel: string,
   backButtonLabel: string,
   backButtonHref: string,
-  showSocial: boolean
+  showSocial?: boolean
 }
 
 const Cardwrapper: FC<CardwrapperProps> = ({ children, backButtonHref, backButtonLabel, headerLabel, showSocial }) => {
@@ -23,7 +23,7 @@ const Cardwrapper: FC<CardwrapperProps> = ({ children, backButtonHref, backButto
       </CardContent>
       {showSocial && (
         <CardFooter>
-          <SocialButton />
+          <Social />
         </CardFooter>
       )}
       <CardFooter>
