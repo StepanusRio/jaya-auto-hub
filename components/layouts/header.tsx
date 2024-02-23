@@ -6,11 +6,7 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ }) => {
   return (
-    <div className='py-3 mb-8 border-b border-border flex flex-row items-center justify-between'>
-      <div>
-        <div>Company</div>
-        <div className='font-semibold'>Jaya Auto</div>
-      </div>
+    <div className='py-3 mb-8 border-b border-border flex flex-row items-center justify-end'>
       <div>
         <UserButton />
       </div>

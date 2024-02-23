@@ -38,3 +38,8 @@ export const SettingSchema = z.object({
   }
   return true
 }, { message: "New password is required!", path: ["newPassword"] })
+
+// Dashboard Schema
+export const CategoriesSchema = z.object({
+  label: z.string().min(4, { message: "Label is required" })
+})

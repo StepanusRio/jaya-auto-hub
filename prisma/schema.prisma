@@ -80,3 +80,11 @@ model TwoFactorConfirmation {
 
   @@unique([userId])
 }
+
+// Master Data
+model Categories {
+  id        String   @id @default(cuid())
+  label     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
