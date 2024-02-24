@@ -1,7 +1,9 @@
 "use client";
 
 import LoginButton from "@/components/auth/login-button";
+import UserButton from "@/components/auth/user-button";
 import { Button } from "@/components/ui/button";
+import { useCurrentUser } from "@/hooks/use-current-user";
 import { AxeIcon, Home, LucideIcon, Menu, X } from "lucide-react";
 import React, { useState } from "react";
 import { Link } from "react-scroll";
@@ -15,6 +17,7 @@ type NavItem = {
 };
 
 const MainNavbar = () => {
+  const user = useCurrentUser();
   const [open, setOpen] = useState(true);
   const items: NavItem[] = [
     {
@@ -74,9 +77,13 @@ const MainNavbar = () => {
                 )
                 : null}
             </ul>
-            <LoginButton mode="modal" asChild>
-              <Button>Login</Button>
-            </LoginButton>
+            {user ? (
+              <UserButton />
+            ) : (
+              <LoginButton mode="modal" asChild>
+                <Button>Login</Button>
+              </LoginButton>
+            )}
           </div>
         </div>
         <div

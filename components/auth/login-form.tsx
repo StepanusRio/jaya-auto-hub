@@ -32,7 +32,6 @@ const LoginForm: FC<LoginFormProps> = ({ }) => {
     }
   })
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-    console.log(values)
     setError("");
     setSuccess("");
     startTransition(() => {

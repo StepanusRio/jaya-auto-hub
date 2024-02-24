@@ -17,7 +17,7 @@ const CategoryFormClient: FC<CategoryFormClientProps> = ({ data }) => {
   return (
     <>
       <div className='flex items-center justify-between'>
-        <Heading title={`Stock Categories[0]`} description='Manage your category stocks 🎉' />
+        <Heading title={`Categories [ ${data.length} ]`} description='Manage your category stocks 🎉' />
         <Button
           onClick={() =>
             router.push(`/dashboard/categories/new`)

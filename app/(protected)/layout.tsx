@@ -1,4 +1,3 @@
-import { SessionProvider } from 'next-auth/react';
 import React, { FC } from 'react';
 import { Toaster } from 'sonner';
 
@@ -10,10 +9,8 @@ const ProtectedLayout: FC<ProtectedLayoutProps> = async ({ children }) => {
 
   return (
     <>
-      <SessionProvider>
-        <Toaster />
-        {children}
-      </SessionProvider>
+      <Toaster />
+      {children}
     </>
   )
 }
